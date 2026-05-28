@@ -8,59 +8,97 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #dcdcdc; /* 高级浅灰背景 */
             font-family: "Microsoft YaHei", sans-serif;
-            color: white;
+            color: #0d2b66;
         }
 
         h1 {
             text-align: center;
-            padding: 30px 0;
-            font-size: 40px;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 35px 0 10px;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #0d2b66;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #3a3a3a;
+            opacity: 0.8;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
             padding: 20px 40px 60px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
         }
 
         .item {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 30px 20px;
+            background: #ffffff;
+            border: 3px solid #0d2b66; /* 深蓝边框 */
+            border-radius: 18px;
+            padding: 35px 20px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: 0.25s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            transition: 0.25s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 卡片悬浮光效 */
+        .item::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 160px;
+            height: 160px;
+            background: rgba(13, 43, 102, 0.15);
+            border-radius: 50%;
+            transition: 0.4s ease;
+            transform: scale(0);
+        }
+
+        .item:hover::before {
+            transform: scale(1.8);
         }
 
         .item:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            background: #f8fbff;
         }
 
         .item img {
-            width: 70px;
+            width: 75px;
             margin-bottom: 15px;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.2));
         }
 
+        .item div {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0d2b66;
+        }
+
+        /* 禁用项 */
         .disabled {
-            opacity: 0.4;
+            opacity: 0.45;
             cursor: not-allowed;
         }
 
         .disabled:hover {
             transform: none;
             box-shadow: none;
-            background: rgba(255, 255, 255, 0.15);
+            background: #ffffff;
         }
     </style>
 </head>
@@ -68,6 +106,7 @@
 <body>
 
     <h1>🎮 游戏大厅</h1>
+    <div class="subtitle">请选择你要进入的游戏</div>
 
     <div class="grid">
 
